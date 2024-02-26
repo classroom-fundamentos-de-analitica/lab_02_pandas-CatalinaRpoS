@@ -173,7 +173,9 @@ def pregunta_10():
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
     new_tbl0 = pd.DataFrame()
-    new_tbl0["_c2"] = tbl0.groupby("_c1")["_c2"].apply(lambda x: ":".join(sorted(x.astype(str))))
+    new_tbl0["_c2"] = tbl0.groupby("_c1")["_c2"].apply(
+        lambda x: ":".join(sorted(x.astype(str)))
+    )
     return new_tbl0
 
 
@@ -216,7 +218,11 @@ def pregunta_12():
     """
     new_tbl2 = tbl2.copy()
     new_tbl2["_c5"] = new_tbl2["_c5a"] + ":" + new_tbl2["_c5b"].astype(str)
-    new_tbl2 = new_tbl2.groupby("_c0")["_c5"].apply(lambda x: ",".join(sorted(x))).reset_index()
+    new_tbl2 = (
+        new_tbl2.groupby("_c0")["_c5"]
+        .apply(lambda x: ",".join(sorted(x)))
+        .reset_index()
+    )
     return new_tbl2
 
 
