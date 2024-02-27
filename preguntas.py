@@ -216,14 +216,14 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    new_tbl2 = tbl2.copy()
-    new_tbl2["_c5"] = new_tbl2["_c5a"] + ":" + new_tbl2["_c5b"].astype(str)
-    new_tbl2 = (
-        new_tbl2.groupby("_c0")["_c5"]
+    tbl2 = tbl2.copy()
+    tbl2["_c5"] = tbl2["_c5a"] + ":" + tbl2["_c5b"].astype(str)
+    tbl2 = (
+        tbl2.groupby("_c0")["_c5"]
         .apply(lambda x: ",".join(sorted(x)))
         .reset_index()
     )
-    return new_tbl2
+    return tbl2
 
 
 def pregunta_13():
